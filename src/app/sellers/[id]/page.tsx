@@ -6,8 +6,8 @@ import { apiGet } from '@/lib/api';
 
 export default async function SellerPage({ params }: { params: { id: string } }) {
   const sellerData = await apiGet<any>(`/v1/sellers/${params.id}`);
-  const seller = sellerData.seller || {};
-  const listingsData = await apiGet<any>(`/v1/listings?seller_id=${seller.id}`);
+  const seller = sellerData?.seller || null;
+  const listingsData = seller?.id ? await apiGet<any>(`/v1/listings?seller_id=${seller.id}`) : { listings: [] };
   const listings = listingsData.listings || [];
 
   return (
@@ -24,9 +24,9 @@ export default async function SellerPage({ params }: { params: { id: string } })
       </nav>
 
       <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
-        <h1 className="text-3xl font-bold text-slate-900">Seller {seller.id}</h1>
-        <p className="text-gray-600">Verified: {seller.verified ? 'Yes' : 'No'}</p>
-        {seller.moltbook_username && (
+        <h1 className="text-3xl font-bold text-slate-900">{seller ? `Seller ${seller.id}` : 'Seller not found'}</h1>
+        {seller && <p className="text-gray-600">Verified: {seller.verified ? 'Yes' : 'No'}</p>}
+        {seller?.moltbook_username && (
           <a
             className="text-red-600 text-sm mt-2 inline-block"
             href={`https://moltbook.com/u/${seller.moltbook_username}`}

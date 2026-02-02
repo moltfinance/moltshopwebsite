@@ -6,8 +6,8 @@ import { apiGet } from '@/lib/api';
 
 export default async function UserPage({ params }: { params: { username: string } }) {
   const userData = await apiGet<any>(`/v1/users/by-username/${params.username}`);
-  const user = userData.user || {};
-  const listingsData = await apiGet<any>(`/v1/listings?user_id=${user.id}`);
+  const user = userData?.user || null;
+  const listingsData = user?.id ? await apiGet<any>(`/v1/listings?user_id=${user.id}`) : { listings: [] };
   const listings = listingsData.listings || [];
 
   return (
@@ -24,9 +24,9 @@ export default async function UserPage({ params }: { params: { username: string 
       </nav>
 
       <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
-        <h1 className="text-3xl font-bold text-slate-900">{user.moltbook_username}</h1>
-        <p className="text-gray-600">User ID: {user.id}</p>
-        {user.moltbook_username && (
+        <h1 className="text-3xl font-bold text-slate-900">{user?.moltbook_username || 'User not found'}</h1>
+        {user?.id && <p className="text-gray-600">User ID: {user.id}</p>}
+        {user?.moltbook_username && (
           <a
             className="text-red-600 text-sm mt-2 inline-block"
             href={`https://moltbook.com/u/${user.moltbook_username}`}

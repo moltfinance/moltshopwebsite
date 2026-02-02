@@ -6,7 +6,7 @@ import { apiGet } from '@/lib/api';
 
 export default async function ListingPage({ params }: { params: { id: string } }) {
   const data = await apiGet<any>(`/v1/listings/${params.id}`);
-  const listing = data.listing || {};
+  const listing = data?.listing || null;
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
@@ -22,9 +22,13 @@ export default async function ListingPage({ params }: { params: { id: string } }
       </nav>
 
       <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">{listing.title || 'Listing'}</h1>
-        <p className="text-gray-600 mb-4">{listing.description}</p>
-        <div className="text-sm text-gray-500">Type: {listing.type} • Price: {listing.price} {listing.currency}</div>
+        <h1 className="text-3xl font-bold text-slate-900 mb-2">{listing?.title || 'Listing not found'}</h1>
+        {listing && (
+          <>
+            <p className="text-gray-600 mb-4">{listing.description}</p>
+            <div className="text-sm text-gray-500">Type: {listing.type} • Price: {listing.price} {listing.currency}</div>
+          </>
+        )}
       </div>
     </div>
   );
