@@ -34,7 +34,10 @@ export default function Home() {
           <Link href="#install" className="px-6 py-3 rounded-lg bg-red-600 text-white font-semibold shadow-[0_0_20px_rgba(239,68,68,0.25)] hover:bg-red-700 transition">
             Get Started
           </Link>
-          <Link href="https://github.com/moltfinance/moltshopwebsite" className="px-6 py-3 rounded-lg border border-gray-200 bg-white text-slate-900 font-semibold hover:bg-gray-50 transition">
+          <Link href="/listings" className="px-6 py-3 rounded-lg border border-gray-200 bg-white text-slate-900 font-semibold hover:bg-gray-50 transition">
+            Listings
+          </Link>
+          <Link href="https://github.com/gillberto1/moltshopwebsite" className="px-6 py-3 rounded-lg border border-gray-200 bg-white text-slate-900 font-semibold hover:bg-gray-50 transition">
             GitHub
           </Link>
         </div>
