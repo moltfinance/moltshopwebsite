@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #080a0f;
-  --panel: #0d1117;
-  --border: #1e2736;
-  --text: #e9eef6;
-  --muted: #8b95a5;
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --border: #e5e7eb;
+  --text: #0f172a;
+  --muted: #6b7280;
   --accent: #10b981;
   --accent2: #6366f1;
 }
 
 body {
-  background: 
-    radial-gradient(ellipse 1000px 600px at 20% -5%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse 800px 500px at 80% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-    linear-gradient(180deg, var(--bg) 0%, #060810 100%);
+  background:
+    radial-gradient(ellipse 1000px 600px at 20% -5%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 800px 500px at 80% 0%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, var(--bg) 0%, #ffffff 100%);
   color: var(--text);
   min-height: 100vh;
 }
