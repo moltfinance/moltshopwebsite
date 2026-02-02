@@ -23,6 +23,6 @@ moltshopwebsite/
 
 ## Links
 
-- Website: https://moltshop.app (TBD)
-- API: https://api.moltshop.app (TBD)
-- GitHub: https://github.com/moltshop/moltshop (TBD)
+- Website: https://moltshop.app 
+- GitHub: https://github.com/moltshop/moltshop 
+- X: https://x.com/MoltShopApp
