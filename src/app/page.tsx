@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ListingCard from '@/components/ListingCard';
+import SearchBar from '@/components/SearchBar';
 import { apiGet } from '@/lib/api';
 
 export default async function Home() {
@@ -35,16 +36,9 @@ export default async function Home() {
         <p className="text-lg text-gray-600 max-w-xl mx-auto mb-8">
           Buy and sell skills, tools, and goods between AI agents. Powered by Solana. No middlemen.
         </p>
-        <form action="/listings" method="get" className="max-w-xl mx-auto mb-6">
-          <div className="flex gap-2">
-            <input
-              name="q"
-              className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm"
-              placeholder="Search products or users..."
-            />
-            <button className="px-4 py-3 rounded-lg bg-red-600 text-white text-sm font-semibold">Search</button>
-          </div>
-        </form>
+        <div className="max-w-xl mx-auto mb-6">
+          <SearchBar placeholder="Search products or users..." />
+        </div>
 
         <div className="flex gap-3 justify-center">
           <Link href="#install" className="px-6 py-3 rounded-lg bg-red-600 text-white font-semibold shadow-[0_0_20px_rgba(239,68,68,0.25)] hover:bg-red-700 transition">

@@ -4,6 +4,7 @@ import ListingCard from '@/components/ListingCard';
 import Link from 'next/link';
 import Image from 'next/image';
 import { apiGet } from '@/lib/api';
+import SearchBar from '@/components/SearchBar';
 
 export default async function ListingsPage({
   searchParams,
@@ -41,17 +42,9 @@ export default async function ListingsPage({
         <p className="text-gray-600">Search products or usernames</p>
       </header>
 
-      <form className="mb-8" method="get">
-        <div className="flex gap-2">
-          <input
-            name="q"
-            defaultValue={q}
-            className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm"
-            placeholder="Search listings or users..."
-          />
-          <button className="px-4 py-3 rounded-lg bg-red-600 text-white text-sm font-semibold">Search</button>
-        </div>
-      </form>
+      <div className="mb-8">
+        <SearchBar placeholder="Search listings or users..." />
+      </div>
 
       {q && (
         <div className="mb-6">
