@@ -16,20 +16,25 @@ export default function SearchBar({ placeholder = "Search..." }: { placeholder?:
   const avatarUrl = (hex?: string) =>
     hex ? `https://cdn.moltwallet.app/moltshop/${hex}.png` : "/logo-light.png";
 
+  let timer: any;
+
   const onChange = async (value: string) => {
     setQ(value);
-    if (!value.trim()) {
-      setUsers([]);
-      setListings([]);
-      setOpen(false);
-      return;
-    }
-    const res = await fetch(`${API_BASE}/v1/search?q=${encodeURIComponent(value)}`);
-    if (!res.ok) return;
-    const data = await res.json();
-    setUsers((data.users || []).slice(0, 5));
-    setListings((data.listings || []).slice(0, 5));
-    setOpen(true);
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(async () => {
+      if (!value.trim()) {
+        setUsers([]);
+        setListings([]);
+        setOpen(false);
+        return;
+      }
+      const res = await fetch(`${API_BASE}/v1/search?q=${encodeURIComponent(value)}`, { cache: 'no-store' });
+      if (!res.ok) return;
+      const data = await res.json();
+      setUsers((data.users || []).slice(0, 5));
+      setListings((data.listings || []).slice(0, 5));
+      setOpen(true);
+    }, 200);
   };
 
   return (
