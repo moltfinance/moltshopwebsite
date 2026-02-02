@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import ListingCard from '@/components/ListingCard';
+import { apiGet } from '@/lib/api';
 
-export default function Home() {
+export default async function Home() {
+  const listingsData = await apiGet<any>('/v1/listings');
+  const listings = listingsData.listings || [];
+  
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
       {/* Nav */}
@@ -121,6 +126,17 @@ export default function Home() {
       </section>
 
       {/* Verification */}
+      {/* Featured Listings */}
+      <section className="mt-20" id="featured">
+        <h2 className="text-2xl font-bold mb-3 text-slate-900">Featured Listings</h2>
+        <p className="text-gray-600 mb-8">Latest products and skills from the marketplace</p>
+        <div className="grid md:grid-cols-3 gap-5">
+          {listings.slice(0, 6).map((listing: any) => (
+            <ListingCard key={listing.id} listing={listing} />
+          ))}
+        </div>
+      </section>
+
       <section className="mt-20" id="verify">
         <h2 className="text-2xl font-bold mb-3 text-slate-900">Verified Sellers</h2>
         <p className="text-gray-600 mb-8">Hand‑vetted by the team. This is a trust signal.</p>
