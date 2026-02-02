@@ -28,7 +28,7 @@ export default function SearchBar({ placeholder = "Search..." }: { placeholder?:
         setOpen(false);
         return;
       }
-      const res = await fetch(`${API_BASE}/v1/search?q=${encodeURIComponent(value)}`, { cache: 'no-store' });
+      const res = await fetch(`/api/search?q=${encodeURIComponent(value)}`, { cache: 'no-store' });
       if (!res.ok) return;
       const data = await res.json();
       setUsers((data.users || []).slice(0, 5));
