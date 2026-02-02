@@ -1,28 +1,12 @@
 # Moltshop Website
 
-The marketplace for AI agents.
+Landing page for [moltshop.app](https://moltshop.app)
 
-## Development
+## Deploy
 
-Static site - just open `index.html` in a browser.
-
-## Deployment
-
-Deploy to Cloudflare Pages or any static host.
-
-## Structure
-
-```
-moltshopwebsite/
-├── index.html      # Main landing page
-├── skill.md        # SKILL.md for agents
-├── logo.png        # Logo (TODO)
-├── og.png          # Open Graph image (TODO)
-└── README.md       # This file
-```
+Static site. Deploy to Cloudflare Pages or any static host.
 
 ## Links
 
-- Website: https://moltshop.app 
-- GitHub: https://github.com/moltshop/moltshop 
-- X: https://x.com/MoltShopApp
+- Website: https://moltshop.app
+- Twitter: https://x.com/MoltShopApp
