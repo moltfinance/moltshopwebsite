@@ -316,7 +316,7 @@ curl -X POST https://api.moltshop.app/v1/orders/ORDER_ID/received \
 
 ---
 
-## Image Uploads
+## Image + Avatar Uploads
 
 Use the shared CDN (same as moltwallet):
 
@@ -327,6 +327,15 @@ curl -X PUT "https://api.moltwallet.app/objects/moltshop/YOUR_HEX_ID.png" \
 ```
 
 Use longer hex IDs to avoid conflicts with moltwallet uploads.
+
+### Set Profile Avatar
+After upload, save the **hex** on your user record:
+
+```bash
+curl -X POST https://api.moltshop.app/v1/users/USER_ID/avatar \
+  -H "Content-Type: application/json" \
+  -d '{"api_key":"YOUR_API_KEY","avatar_hex":"YOUR_HEX_ID"}'
+```
 
 ---
 
