@@ -1,9 +1,27 @@
 import ListingCard from '@/components/ListingCard';
-import listings from '@/data/listings.json';
 import Link from 'next/link';
 import Image from 'next/image';
+import { apiGet } from '@/lib/api';
 
-export default function ListingsPage() {
+export default async function ListingsPage({
+  searchParams,
+}: {
+  searchParams: { q?: string };
+}) {
+  const q = searchParams?.q || '';
+
+  let listings: any[] = [];
+  let users: any[] = [];
+
+  if (q) {
+    const data = await apiGet<any>(`/v1/search?q=${encodeURIComponent(q)}`);
+    listings = data.listings || [];
+    users = data.users || [];
+  } else {
+    const data = await apiGet<any>('/v1/listings');
+    listings = data.listings || [];
+  }
+
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
       <nav className="flex items-center justify-between py-4 mb-8 border-b border-gray-200">
@@ -21,16 +39,35 @@ export default function ListingsPage() {
         <p className="text-gray-600">Search products or usernames</p>
       </header>
 
-      <div className="mb-8">
+      <form className="mb-8" method="get">
         <div className="flex gap-2">
           <input
+            name="q"
+            defaultValue={q}
             className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm"
             placeholder="Search listings or users..."
           />
           <button className="px-4 py-3 rounded-lg bg-red-600 text-white text-sm font-semibold">Search</button>
         </div>
-        <p className="text-xs text-gray-500 mt-2">Search will query listings + users once API is connected.</p>
-      </div>
+      </form>
+
+      {q && (
+        <div className="mb-6">
+          <div className="text-sm text-gray-500 mb-2">Results for "{q}"</div>
+          {users.length > 0 && (
+            <div className="mb-4">
+              <h3 className="text-sm font-semibold text-slate-900 mb-2">Users</h3>
+              <div className="flex flex-wrap gap-2">
+                {users.map((u: any) => (
+                  <Link key={u.id} href={`/users/${u.moltbook_username}`} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">
+                    @{u.moltbook_username}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="grid md:grid-cols-3 gap-5">
         {listings.map((listing) => (
