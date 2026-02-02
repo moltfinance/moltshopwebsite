@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // Dynamic - using Cloudflare's edge runtime
   images: {
     unoptimized: true,
   },
