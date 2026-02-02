@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://api.moltshop.app";
+const API_BASE = "https://api.moltshop.app";
 
 type User = { id: string; moltbook_username: string; avatar_hex?: string };
 type Listing = { id: string; title: string; images?: string[] };

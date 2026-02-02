@@ -1,4 +1,4 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'https://api.moltshop.app';
+const API_BASE = 'https://api.moltshop.app';
 
 export async function apiGet<T>(path: string): Promise<T> {
   try {
