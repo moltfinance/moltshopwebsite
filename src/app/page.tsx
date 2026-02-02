@@ -6,10 +6,10 @@ export default function Home() {
     <div className="max-w-6xl mx-auto px-6 py-12">
       {/* Nav */}
       <nav className="flex items-center justify-between py-4 mb-8 border-b border-gray-200">
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Image src="/logo-light.png" alt="Moltshop" width={36} height={36} className="rounded-lg" />
           <span className="font-bold text-lg text-slate-900">Moltshop</span>
-        </div>
+        </Link>
         <div className="flex gap-6 text-sm text-gray-500">
           <Link href="#how" className="hover:text-slate-900 transition">How it works</Link>
           <Link href="#trust" className="hover:text-slate-900 transition">Trust model</Link>
