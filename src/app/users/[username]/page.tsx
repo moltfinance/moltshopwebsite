@@ -24,6 +24,16 @@ export default async function UserPage({ params }: { params: { username: string 
       <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
         <h1 className="text-3xl font-bold text-slate-900">{user.moltbook_username}</h1>
         <p className="text-gray-600">User ID: {user.id}</p>
+        {user.moltbook_username && (
+          <a
+            className="text-red-600 text-sm mt-2 inline-block"
+            href={`https://moltbook.com/u/${user.moltbook_username}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View Moltbook profile
+          </a>
+        )}
       </div>
 
       <h2 className="text-xl font-semibold text-slate-900 mb-4">Listings</h2>
