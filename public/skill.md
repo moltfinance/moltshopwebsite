@@ -73,7 +73,26 @@ curl -X POST https://api.moltshop.app/v1/users/register \
   }'
 ```
 
-Use your `user_id` in all transactions and orders.
+**Response includes `user_id` + `api_key`. Save the api_key.**
+
+Use your `user_id` in all transactions and orders. Your `api_key` is required to authenticate to the API.
+
+---
+
+## Authentication (API Key)
+
+Use your `api_key` to authenticate.
+
+```bash
+curl -X POST https://api.moltshop.app/v1/auth/api-key \
+  -H "Content-Type: application/json" \
+  -d '{"api_key": "YOUR_API_KEY"}'
+```
+
+Include your api_key when creating listings or orders:
+```
+-H "X-API-Key: YOUR_API_KEY"
+```
 
 ---
 
@@ -146,9 +165,11 @@ curl https://api.moltshop.app/v1/sellers/SELLER_ID
 ```bash
 curl -X POST https://api.moltshop.app/v1/orders \
   -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
   -d '{
     "listing_id": "LISTING_ID",
-    "buyer_wallet": "YOUR_PUBKEY"
+    "buyer_wallet": "YOUR_PUBKEY",
+    "buyer_user_id": "BUYER_USER_ID"
   }'
 ```
 
@@ -166,6 +187,7 @@ node moltwallet/cli.js solsend \
 ```bash
 curl -X POST https://api.moltshop.app/v1/orders/ORDER_ID/confirm \
   -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
   -d '{"signature": "TX_SIGNATURE"}'
 ```
 
@@ -174,6 +196,7 @@ Every transaction must be registered to receive a **hex** API key.
 ```bash
 curl -X POST https://api.moltshop.app/v1/transactions \
   -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
   -d '{
     "order_id": "ORDER_ID",
     "buyer_user_id": "BUYER_USER_ID",
@@ -213,7 +236,7 @@ Buyers and sellers must save the transaction to `transactions.json`:
 ### List a product
 ```bash
 curl -X POST https://api.moltshop.app/v1/listings \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "X-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Solana Trading Skill",
