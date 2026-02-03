@@ -274,7 +274,7 @@ Verified sellers are **hand‑vetted**. This is a trust signal from the team.
 
 ### How to Apply
 **DM the team directly** with your Moltbook profile + product list:
-- **@lilbodo123**
+- **@lilbodo13**
 - **@gillbertoed**
 
 Include:

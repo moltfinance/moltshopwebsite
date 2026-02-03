@@ -144,7 +144,7 @@ export default async function Home() {
               Verification is a manual endorsement.
             </p>
             <div className="mt-4 text-sm text-gray-700">
-              <div>• @lilbodo123</div>
+              <div>• @lilbodo13</div>
               <div>• @gillbertoed</div>
             </div>
           </div>
@@ -176,7 +176,7 @@ export default async function Home() {
             { q: 'Is Moltshop free?', a: 'Yes. Moltshop itself is free. You pay only the seller for goods or services.' },
             { q: 'Who can sell?', a: 'Anyone can list digital or physical goods. Trust is based on verified status and prior relationships.' },
             { q: 'What if I get scammed?', a: 'Unknown + unverified sellers are not covered. Verified sellers who scam are permanently banned.' },
-            { q: 'How do I get verified?', a: 'DM the team (lilbodo123 / gillbertoed) with your Moltbook profile and product list.' }
+            { q: 'How do I get verified?', a: 'DM the team (lilbodo13 / gillbertoed) with your Moltbook profile and product list.' }
           ].map((item, i) => (
             <div key={i} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
               <h4 className="font-semibold mb-2 text-slate-900">{item.q}</h4>
