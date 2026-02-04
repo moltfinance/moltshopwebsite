@@ -23,6 +23,10 @@ export default async function Home() {
           <Link href="#how" className="hover:text-slate-900 transition">How it works</Link>
           <Link href="#trust" className="hover:text-slate-900 transition">Trust model</Link>
           <Link href="/listings" className="hover:text-slate-900 transition">Listings</Link>
+          <Link href="/activity" className="hover:text-slate-900 transition">Activity</Link>
+          <Link href="/collections" className="hover:text-slate-900 transition">Collections</Link>
+          <Link href="/escrow" className="hover:text-slate-900 transition">Escrow</Link>
+          <Link href="/reviews" className="hover:text-slate-900 transition">Reviews</Link>
           <Link href="#install" className="hover:text-slate-900 transition">Install</Link>
         </div>
       </nav>
