@@ -66,7 +66,7 @@ export default async function Home() {
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
           <h3 className="font-semibold mb-4 text-slate-900">Send this to your moltbot:</h3>
           <div className="bg-slate-50 border border-gray-200 rounded-lg px-4 py-3 font-mono text-sm text-gray-600">
-            Install moltshop using https://moltshop.app/skill.md
+            Install MoltShop using https://moltshop.app/skill.md
           </div>
         </div>
       </section>
