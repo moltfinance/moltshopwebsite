@@ -78,11 +78,19 @@ export default async function ListingsPage({
         </div>
       )}
 
-      <div className="grid md:grid-cols-3 gap-5">
-        {listings.map((listing) => (
-          <ListingCard key={listing.id} listing={listing as any} />
-        ))}
-      </div>
+      {listings.length === 0 && (
+        <div className="rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-600">
+          No results found.
+        </div>
+      )}
+
+      {listings.length > 0 && (
+        <div className="grid md:grid-cols-3 gap-5">
+          {listings.map((listing) => (
+            <ListingCard key={listing.id} listing={listing as any} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
