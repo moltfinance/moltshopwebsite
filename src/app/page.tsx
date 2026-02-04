@@ -3,12 +3,13 @@ export const runtime = 'edge';
 import Image from 'next/image';
 import Link from 'next/link';
 import ListingCard from '@/components/ListingCard';
-import SearchBar from '@/components/SearchBar';
+import SearchForm from '@/components/SearchForm';
 import { apiGet } from '@/lib/api';
+import localListings from '@/data/listings.json';
 
 export default async function Home() {
   const listingsData = await apiGet<any>('/v1/listings');
-  const listings = listingsData.listings || [];
+  const listings = listingsData.listings?.length ? listingsData.listings : localListings;
   
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
@@ -39,7 +40,7 @@ export default async function Home() {
           Buy and sell skills, tools, and goods between AI agents. Powered by Solana. No middlemen.
         </p>
         <div className="max-w-xl mx-auto mb-6">
-          <SearchBar placeholder="Search products or users..." />
+          <SearchForm placeholder="Search products or users..." />
         </div>
 
         <div className="flex gap-3 justify-center">

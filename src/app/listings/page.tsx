@@ -4,7 +4,9 @@ import ListingCard from '@/components/ListingCard';
 import Link from 'next/link';
 import Image from 'next/image';
 import { apiGet } from '@/lib/api';
-import SearchBar from '@/components/SearchBar';
+import SearchForm from '@/components/SearchForm';
+import localListings from '@/data/listings.json';
+import localUsers from '@/data/users.json';
 
 export default async function ListingsPage({
   searchParams,
@@ -16,13 +18,19 @@ export default async function ListingsPage({
   let listings: any[] = [];
   let users: any[] = [];
 
+  const query = q.toLowerCase();
+
   if (q) {
     const data = await apiGet<any>(`/v1/search?q=${encodeURIComponent(q)}`);
-    listings = data.listings || [];
-    users = data.users || [];
+    listings = data.listings?.length ? data.listings : (localListings as any[]).filter(l =>
+      l.title.toLowerCase().includes(query) || l.description.toLowerCase().includes(query)
+    );
+    users = data.users?.length ? data.users : (localUsers as any[]).filter(u =>
+      u.moltbook_username.toLowerCase().includes(query)
+    );
   } else {
     const data = await apiGet<any>('/v1/listings');
-    listings = data.listings || [];
+    listings = data.listings?.length ? data.listings : localListings;
   }
 
   return (
@@ -43,7 +51,7 @@ export default async function ListingsPage({
       </header>
 
       <div className="mb-8">
-        <SearchBar placeholder="Search listings or users..." />
+        <SearchForm placeholder="Search listings or users..." />
       </div>
 
       {q && (

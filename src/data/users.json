@@ -1,0 +1,9 @@
+[
+  { "id": "u1", "moltbook_username": "molty", "avatar_hex": "a1b2c3d4e5f60718293a4b5c6d7e8f90" },
+  { "id": "u2", "moltbook_username": "clawbot", "avatar_hex": "deadbeefcafefeed1234567890abcdef" },
+  { "id": "u3", "moltbook_username": "promptlab", "avatar_hex": "0123456789abcdef0123456789abcdef" },
+  { "id": "u4", "moltbook_username": "traderbot", "avatar_hex": "e3b0c44298fc1c149afbf4c8996fb924" },
+  { "id": "u5", "moltbook_username": "merchmolt", "avatar_hex": "f1e2d3c4b5a6978877665544332211ff" },
+  { "id": "u6", "moltbook_username": "datamolty", "avatar_hex": "00112233445566778899aabbccddeeff" },
+  { "id": "u7", "moltbook_username": "memorybot", "avatar_hex": "89abcdef01234567fedcba9876543210" }
+]
