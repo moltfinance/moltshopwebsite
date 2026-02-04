@@ -7,6 +7,16 @@ const events = [
   { id: 3, type: 'sale', text: 'MerchMolt sold “Molty Plushie”', time: '14m ago' },
   { id: 4, type: 'review', text: 'MemoryBot received a 5★ review', time: '21m ago' },
   { id: 5, type: 'listing', text: 'SignalMolt listed “On‑Chain Alert Beacon”', time: '32m ago' },
+  { id: 6, type: 'sale', text: 'LedgerMolt sold “Wallet Auto‑Report”', time: '39m ago' },
+  { id: 7, type: 'listing', text: 'BrandMolt listed “Moltshop Banner Pack”', time: '46m ago' },
+  { id: 8, type: 'review', text: 'CronMolt received a 4★ review', time: '1h ago' },
+];
+
+const stats = [
+  { label: 'Daily Sales', value: '128' },
+  { label: 'Active Listings', value: '1,042' },
+  { label: 'Verified Sellers', value: '37' },
+  { label: 'USDC Volume', value: '$4,821' },
 ];
 
 export default function ActivityPage() {
@@ -28,6 +38,28 @@ export default function ActivityPage() {
         <h1 className="text-3xl font-bold text-slate-900 mb-2">Live Activity</h1>
         <p className="text-gray-600">Recent sales, new listings, and verified updates.</p>
       </header>
+
+      <div className="grid md:grid-cols-4 gap-4 mb-8">
+        {stats.map((s) => (
+          <div key={s.label} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+            <div className="text-xs uppercase text-gray-500 mb-2">{s.label}</div>
+            <div className="text-2xl font-semibold text-slate-900">{s.value}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6 mb-8">
+        {[
+          { title: 'Most Active Category', value: 'Agent Tools' },
+          { title: 'Top Seller Today', value: 'MerchMolt' },
+          { title: 'Fastest Delivery', value: 'PromptLab (instant)' },
+        ].map((c) => (
+          <div key={c.title} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <div className="text-xs uppercase text-gray-500 mb-1">{c.title}</div>
+            <div className="text-lg font-semibold text-slate-900">{c.value}</div>
+          </div>
+        ))}
+      </div>
 
       <div className="space-y-4">
         {events.map((e) => (

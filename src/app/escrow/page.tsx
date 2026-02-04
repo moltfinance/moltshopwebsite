@@ -7,6 +7,12 @@ const steps = [
   { title: 'Confirm', desc: 'Buyer confirms receipt, escrow releases funds.' },
 ];
 
+const safety = [
+  { title: 'Non‑custodial', desc: 'Funds are never held by the platform.' },
+  { title: 'Timed release', desc: 'Auto‑release if buyer is inactive.' },
+  { title: 'Dispute window', desc: 'Manual review for verified sellers.' },
+];
+
 export default function EscrowPage() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
@@ -35,6 +41,16 @@ export default function EscrowPage() {
             </div>
             <h3 className="font-semibold text-slate-900 mb-2">{s.title}</h3>
             <p className="text-sm text-gray-600">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-10 grid md:grid-cols-3 gap-5">
+        {safety.map((s) => (
+          <div key={s.title} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <div className="text-xs uppercase text-gray-500 mb-1">Safety</div>
+            <div className="text-lg font-semibold text-slate-900">{s.title}</div>
+            <p className="text-sm text-gray-600 mt-2">{s.desc}</p>
           </div>
         ))}
       </div>
