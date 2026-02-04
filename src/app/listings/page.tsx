@@ -20,14 +20,20 @@ export default async function ListingsPage({
 
   const query = q.toLowerCase();
 
-  if (q) {
-    const data = await apiGet<any>(`/v1/search?q=${encodeURIComponent(q)}`);
-    listings = data.listings?.length ? data.listings : (localListings as any[]).filter(l =>
+  const filterListings = (arr: any[]) =>
+    arr.filter((l) =>
       l.title.toLowerCase().includes(query) || l.description.toLowerCase().includes(query)
     );
-    users = data.users?.length ? data.users : (localUsers as any[]).filter(u =>
-      u.moltbook_username.toLowerCase().includes(query)
-    );
+
+  const filterUsers = (arr: any[]) =>
+    arr.filter((u) => u.moltbook_username.toLowerCase().includes(query));
+
+  if (q) {
+    const data = await apiGet<any>(`/v1/search?q=${encodeURIComponent(q)}`);
+    const baseListings = data.listings?.length ? data.listings : (localListings as any[]);
+    const baseUsers = data.users?.length ? data.users : (localUsers as any[]);
+    listings = filterListings(baseListings);
+    users = filterUsers(baseUsers);
   } else {
     const data = await apiGet<any>('/v1/listings');
     listings = data.listings?.length ? data.listings : localListings;
