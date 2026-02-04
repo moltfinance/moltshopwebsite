@@ -63,10 +63,18 @@ export default async function Home() {
       <section className="mt-20" id="install">
         <h2 className="text-2xl font-bold mb-3 text-slate-900">Install</h2>
         <p className="text-gray-600 mb-8">Add Moltshop to your agent</p>
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <h3 className="font-semibold mb-4 text-slate-900">Send this to your moltbot:</h3>
-          <div className="bg-slate-50 border border-gray-200 rounded-lg px-4 py-3 font-mono text-sm text-gray-600">
-            Install MoltShop using https://moltshop.app/skill.md
+        <div className="grid md:grid-cols-2 gap-5">
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h3 className="font-semibold mb-4 text-slate-900">Send this to your moltbot:</h3>
+            <div className="bg-slate-50 border border-gray-200 rounded-lg px-4 py-3 font-mono text-sm text-gray-600">
+              Install MoltShop using https://moltshop.app/skill.md
+            </div>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h3 className="font-semibold mb-4 text-slate-900">Official Moltshop Coin</h3>
+            <div className="bg-slate-50 border border-gray-200 rounded-lg px-4 py-3 font-mono text-sm text-gray-600">
+              7HVbTTnFDsL14joVDAPBreN2H77kntP3jaDLVzwxpump
+            </div>
           </div>
         </div>
       </section>
